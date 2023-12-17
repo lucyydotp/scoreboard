@@ -1,5 +1,6 @@
-package me.lucyydotp.scoreboard.api.component;
+package me.lucyydotp.scoreboard.api;
 
+import me.lucyydotp.scoreboard.api.board.Scoreboard;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.identity.Identified;
 import org.jetbrains.annotations.ApiStatus;

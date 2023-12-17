@@ -1,14 +1,23 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 pluginManagement {
-    plugins {
-        kotlin("jvm") version "1.9.21"
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+        maven("https://maven.fabricmc.net")
+        maven("https://maven.lucyydotp.me/releases")
     }
 }
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }
+
 rootProject.name = "scoreboard"
 
 include(
     "api",
-    "nms"
+    "nms",
+    "paper"
 )
+
+project(":paper").name = "scoreboard-paper"

@@ -1,5 +1,6 @@
 package me.lucyydotp.scoreboard.api.component;
 
+import me.lucyydotp.scoreboard.api.line.ScoreboardLine;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.identity.Identified;
 import net.kyori.adventure.key.Key;
@@ -43,5 +44,9 @@ public interface ScoreboardComponent<P extends Audience & Identified> extends Co
     @Override
     default int compareTo(@NotNull ScoreboardComponent<?> o) {
         return o.priority() - this.priority();
+    }
+
+    static <P extends Audience & Identified> ScoreboardComponent<P> fixed(Key key, List<ScoreboardLine> lines, int priority) {
+        return new FixedComponent<>(key, priority, lines);
     }
 }

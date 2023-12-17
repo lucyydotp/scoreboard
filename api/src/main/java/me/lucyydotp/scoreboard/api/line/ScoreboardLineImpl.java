@@ -1,4 +1,4 @@
-package me.lucyydotp.scoreboard.api.component;
+package me.lucyydotp.scoreboard.api.line;
 
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.Nullable;

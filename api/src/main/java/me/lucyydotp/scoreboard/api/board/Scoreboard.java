@@ -1,15 +1,18 @@
-package me.lucyydotp.scoreboard.api.component;
+package me.lucyydotp.scoreboard.api.board;
 
+import me.lucyydotp.scoreboard.api.component.ScoreboardComponent;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.identity.Identified;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.UnmodifiableView;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * A scoreboard - a set of {@link ScoreboardComponent}s with a title.
+ *
  * @param <P> the player type
  */
 public interface Scoreboard<P extends Audience & Identified> {
@@ -21,6 +24,7 @@ public interface Scoreboard<P extends Audience & Identified> {
 
     /**
      * Attempts to add a component to the scoreboard.
+     *
      * @param component the component to add
      * @return {@code true} if the component was added, {@code false} if a component with same key is already registered
      */
@@ -28,6 +32,7 @@ public interface Scoreboard<P extends Audience & Identified> {
 
     /**
      * Removes a component from the scoreboard.
+     *
      * @param key the component's key
      * @return {@code true} if a component with that key was removed, {@code false} otherwise
      */
@@ -40,7 +45,12 @@ public interface Scoreboard<P extends Audience & Identified> {
 
     /**
      * Sets the scoreboard's title.
+     *
      * @param component the title for the scoreboard
      */
     void title(Component component);
+
+    static <P extends Audience & Identified> Scoreboard<P> fixed(Component title, List<ScoreboardComponent<? super P>> components) {
+        return new FixedBoard<>(title, components);
+    }
 }
